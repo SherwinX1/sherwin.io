@@ -14,7 +14,7 @@ export default function Hero({ isDarkMode }) {
           Full-Stack Developer
         </h1>
         <p className={`${isDarkMode ? 'text-slate-400' : 'text-slate-600'} max-w-xl mx-auto lg:mx-0 text-lg leading-relaxed mb-10`}>
-          Hi I'm <span className="text-blue-500 font-semibold">Sherwin Lopez</span>. An Aspiring Full Stack Developer based in Pangasinan, Philippines
+          Hi I'm <span className="text-blue-500 font-semibold">Sherwin Lopez</span>. An Aspiring Full Stack Developer based in Philippines.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
           <button className={`${isDarkMode ? 'bg-slate-100 text-slate-900' : 'bg-slate-900 text-white'} px-8 py-4 rounded-full font-bold hover:bg-blue-500 hover:text-white transition-all shadow-xl`}>

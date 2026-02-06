@@ -1,32 +1,42 @@
 import React from 'react';
 import ProjectCard from './ProjectCard';
 
+// 1. Import your local images here
+// Make sure the path matches your actual folder structure
+import denturaImg from '../assets/dentura1.png';
+import mediImg from '../assets/meditrack.png';
+import sherwinImg from '../assets/sherwin.png';
+
+
 export default function Projects({ isDarkMode }) {
   const projectData = [
     {
       id: 1,
-      title: "E-Commerce Platform",
-      description: "A full-stack online store with payment integration and admin dashboard. Managed real-time inventory and user authentication.",
-      tags: ["React", "Node.js", "MySQL", "Tailwind"],
-      github: "https://github.com/SherwinX1",
-      image: "https://images.unsplash.com/photo-1557821552-17105176677c?q=80&w=1000",
+      title: "Dentura",
+      description: "Dentura is a modern dental clinic website template with an integrated booking system designed to streamline appointment scheduling and improve patient experience.",
+      tags: ["PHP", "HTML", "MySQL", "Bootstrap"],
+      github: "https://github.com/SherwinX1/Dentura",
+      image: denturaImg, // Use the imported variable
     },
+
     {
       id: 2,
-      title: "Management System",
-      description: "Inventory and sales tracking system built for local businesses to automate bookkeeping and generate monthly reports.",
-      tags: ["PHP", "Xampp", "Bootstrap"],
+      title: "Meditrack",
+      description: "MediTrack is an innovative e-commerce application designed to make medicine management simple and reliable. It helps users track the exact times they need to take their medications, ensuring they never miss a dose. Designed with convenience in mind, it is especially helpful for those who struggle to manage their medication schedules, including the elderly. MediTrack also features fast delivery, bringing medicines straight to your doorstep within a day, so users can focus on their health without worrying about running out of essential medications. ",
+      tags: ["Flutter", "Javascript", "Android Studio"],
       github: "https://github.com/SherwinX1",
-      image: "https://images.unsplash.com/photo-1454165833267-028cc21e7867?q=80&w=1000",
+      image: mediImg, // Use the imported variable
     },
+
     {
       id: 3,
-      title: "Portfolio Website",
-      description: "A modern, responsive portfolio with dark mode support and smooth Framer Motion animations.",
-      tags: ["React", "Framer Motion", "Lucide React"],
-      github: "https://github.com/SherwinX1",
-      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1000",
-    }
+      title: "sherwin.io",
+      description: "sherwin.io is a personal portfolio website built with React and Tailwind CSS. It showcases my projects, skills, and experience in a modern, responsive design.",
+      tags: ["React", "Tailwind CSS", "JavaScript"],
+      github: "https://github.com/SherwinX1/sherwin.io",
+      image: sherwinImg, // Use the imported variable
+    },
+
   ];
 
   return (
