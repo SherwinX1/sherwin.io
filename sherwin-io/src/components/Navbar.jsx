@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Sun, Moon } from 'lucide-react';
+import { Sun, Moon } from 'lucide-react'; // Added FileDown for flair
 
 export default function Navbar({ isDarkMode, setIsDarkMode }) {
   return (
@@ -26,9 +26,14 @@ export default function Navbar({ isDarkMode, setIsDarkMode }) {
           {isDarkMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
         </button>
 
-        <button className="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-full transition shadow-lg shadow-blue-900/20">
+        {/* Updated Resume Download Link */}
+        <a 
+          href="/Sherwin-Lopez-Resume.pdf" // Path to your file
+          download="Sherwin_Lopez_Resume.pdf" // Optional: Force this filename on download
+          className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-full transition shadow-lg shadow-blue-900/20 active:scale-95"
+        >
           Resume
-        </button>
+        </a>
       </div>
     </nav>
   );

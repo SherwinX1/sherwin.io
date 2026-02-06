@@ -5,6 +5,7 @@ import About from './components/About';
 import Experience from './components/Experience';
 import Skills from './components/Skills';
 import Projects from './components/Projects';
+import ContactFAB from './components/ContactFAB';
 
 export default function App() {
   const [isDarkMode, setIsDarkMode] = useState(true); 
@@ -28,6 +29,7 @@ export default function App() {
       <Skills isDarkMode={isDarkMode} />
       
       {/* Optional: Add a Footer section here later */}
+      <ContactFAB isDarkMode={isDarkMode} />
     </div>
   );
 }

@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import profileImg from '../assets/profile.jpg';
 
 export default function Hero({ isDarkMode }) {
   return (
@@ -17,12 +18,20 @@ export default function Hero({ isDarkMode }) {
           Hi I'm <span className="text-blue-500 font-semibold">Sherwin Lopez</span>. An Aspiring Full Stack Developer based in Philippines.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-          <button className={`${isDarkMode ? 'bg-slate-100 text-slate-900' : 'bg-slate-900 text-white'} px-8 py-4 rounded-full font-bold hover:bg-blue-500 hover:text-white transition-all shadow-xl`}>
+          <a href="#projects" className="contents">
+          <button className={`${isDarkMode ? 'bg-slate-100 text-slate-900' : 'bg-slate-900 text-white'} px-8 py-4 rounded-full font-bold hover:bg-blue-500 hover:text-white transition-all shadow-xl text-center w-full sm:w-auto`}>
             View Projects
           </button>
-          <button className={`border ${isDarkMode ? 'border-slate-700' : 'border-slate-300'} px-8 py-4 rounded-full font-bold hover:border-blue-500 transition-all`}>
-            Get In Touch
-          </button>
+          </a>
+          <a 
+            href="https://www.linkedin.com/in/sherwin-lopez-473092388/" 
+            className="contents"
+          >
+            <button className={`border ${isDarkMode ? 'border-slate-700' : 'border-slate-300'} px-8 py-4 rounded-full font-bold hover:border-blue-500 transition-all`}>
+              Get In Touch
+            </button>
+          </a>
+          
         </div>
       </motion.div>
 
@@ -36,7 +45,7 @@ export default function Hero({ isDarkMode }) {
           <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-emerald-500 rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-1000"></div>
           <div className={`relative w-72 h-72 md:w-96 md:h-96 ${isDarkMode ? 'bg-slate-800 border-slate-700' : 'bg-white border-slate-200'} rounded-2xl overflow-hidden border shadow-2xl`}>
             <img 
-              src="https://via.placeholder.com/600" 
+              src={profileImg} 
               alt="Sherwin Lopez" 
               className="w-full h-full object-cover grayscale hover:grayscale-0 transition duration-500"
             />
