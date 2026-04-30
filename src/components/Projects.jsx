@@ -6,6 +6,7 @@ import ProjectCard from './ProjectCard';
 import denturaImg from '../assets/dentura1.png';
 import mediImg from '../assets/meditrack.png';
 import sherwinImg from '../assets/sherwin.png';
+import essentialImg from '../assets/essential.png';
 
 
 export default function Projects({ isDarkMode }) {
@@ -33,8 +34,16 @@ export default function Projects({ isDarkMode }) {
       title: "sherwin.io",
       description: "sherwin.io is a personal portfolio website built with React and Tailwind CSS. It showcases my projects, skills, and experience in a modern, responsive design.",
       tags: ["React", "Tailwind CSS", "JavaScript"],
-      github: "https://github.com/SherwinX1/sherwin.io",
+      github: "https://sherwinio.vercel.app/",
       image: sherwinImg, // Use the imported variable
+    },
+    {
+      id: 4,
+      title: "Essential Hub Cafe",
+      description: "Essential Hub Cafe is a modern coffee shop website template designed to provide an engaging online experience for coffee enthusiasts.",
+      tags: ["React", "Tailwind CSS", "JavaScript"],
+      github: "https://essential-cafe.vercel.app/",
+      image: essentialImg, // Use the imported variable
     },
 
   ];
