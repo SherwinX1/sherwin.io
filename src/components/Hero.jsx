@@ -15,7 +15,7 @@ export default function Hero({ isDarkMode }) {
           Full-Stack Developer
         </h1>
         <p className={`${isDarkMode ? 'text-slate-400' : 'text-slate-600'} max-w-xl mx-auto lg:mx-0 text-lg leading-relaxed mb-10`}>
-          Hi I'm <span className="text-blue-500 font-semibold">Sherwin Lopez</span>. An Aspiring Full Stack Developer based in Philippines.
+          Hi I'm <span className="text-blue-500 font-semibold">Sherwin Lopez</span>, a Full Stack Developer based in the Philippines.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
           <a href="#projects" className="contents">

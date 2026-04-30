@@ -5,9 +5,9 @@ import { User2, MapPinned, Github, Linkedin, Facebook, Instagram } from 'lucide-
 export default function About({ isDarkMode }) {
   const socials = [
     { icon: <Github />, url: "https://github.com/SherwinX1" },
-    { icon: <Linkedin />, url: "https://linkedin.com" },
-    { icon: <Facebook />, url: "https://facebook.com" },
-    { icon: <Instagram />, url: "https://instagram.com" }
+    { icon: <Linkedin />, url: "https://www.linkedin.com/in/sherwin-lopez-473092388/" },
+    { icon: <Facebook />, url: "https://www.facebook.com/weyn68/" },
+    { icon: <Instagram />, url: "https://www.instagram.com/serweynn/" }
   ];
 
   return (
