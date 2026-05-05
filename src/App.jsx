@@ -5,6 +5,8 @@ import About from './components/About';
 import Experience from './components/Experience';
 import Skills from './components/Skills';
 import Projects from './components/Projects';
+import Testimonial from './components/Testimonial';
+import Contact from './components/Contact';
 import ContactFAB from './components/ContactFAB';
 
 export default function App() {
@@ -22,13 +24,16 @@ export default function App() {
       
       <About isDarkMode={isDarkMode} />
       
+      <Testimonial isDarkMode={isDarkMode} />
+
       <Experience isDarkMode={isDarkMode} />
 
       <Projects isDarkMode={isDarkMode} />
-      
+
       <Skills isDarkMode={isDarkMode} />
+
+      <Contact isDarkMode={isDarkMode} />
       
-      {/* Optional: Add a Footer section here later */}
       <ContactFAB isDarkMode={isDarkMode} />
     </div>
   );

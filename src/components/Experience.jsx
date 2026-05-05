@@ -6,9 +6,8 @@ export default function Experience({ isDarkMode }) {
   const skillExperience = [
     { name: "HTML / CSS", years: 5, percentage: 95 },
     { name: "JavaScript", years: 2, percentage: 60 },
-    { name: "React, Tailwind, Bootstrap", years: 2, percentage: 70 },
+    { name: "React, Tailwind, Bootstrap", years: 3, percentage: 80 },
     { name: "Xampp, MySQL", years: 4, percentage: 85 },
-    { name: "Python", years: 1, percentage: 30 },
   ];
 
   return (

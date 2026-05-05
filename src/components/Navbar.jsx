@@ -1,11 +1,37 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Sun, Moon } from 'lucide-react';
 
 export default function Navbar({ isDarkMode, setIsDarkMode }) {
+  const [isVisible, setIsVisible] = useState(true);
+  const lastScrollY = useRef(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+
+      if (currentScrollY < 50) {
+        setIsVisible(true);
+      } else if (currentScrollY > lastScrollY.current + 10) {
+        setIsVisible(false);
+      } else if (currentScrollY < lastScrollY.current - 10) {
+        setIsVisible(true);
+      }
+
+      lastScrollY.current = currentScrollY;
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
-    // Fixed wrapper to handle the floating position
-    <nav className="fixed top-0 left-0 right-0 z-50 flex justify-center p-6">
+    <motion.nav
+      initial={{ opacity: 1, y: 0 }}
+      animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : -16 }}
+      transition={{ duration: 0.28, ease: 'easeOut' }}
+      className="fixed top-0 left-0 right-0 z-50 flex justify-center p-6"
+    >
       {/* 
         The Floating Container:
         - rounded-2xl: Matches the softer rectangular corners in image_2a4919.png
@@ -13,7 +39,7 @@ export default function Navbar({ isDarkMode, setIsDarkMode }) {
         - max-w-7xl: Keeps it aligned with your content width
       */}
       <div 
-        className={`w-full max-w-7xl flex justify-between items-center px-8 py-4 transition-all duration-300
+        className={`w-full max-w-7xl flex justify-between items-center px-8 py-4 transition-all duration-300 ${isVisible ? 'pointer-events-auto' : 'pointer-events-none'}
           ${isDarkMode 
             ? 'bg-slate-900/80 border border-slate-700/50 shadow-2xl' 
             : 'bg-white/80 border border-slate-200/60 shadow-xl'} 
@@ -33,6 +59,7 @@ export default function Navbar({ isDarkMode, setIsDarkMode }) {
             <a href="#about" className="hover:text-blue-500 transition">About</a>
             <a href="#experience" className="hover:text-blue-500 transition">Experience</a>
             <a href="#skills" className="hover:text-blue-500 transition">Skills</a>
+            <a href="#contact" className="hover:text-blue-500 transition">Contact</a>
           </div>
           
           <div className="flex items-center gap-3">
@@ -58,6 +85,6 @@ export default function Navbar({ isDarkMode, setIsDarkMode }) {
           </div>
         </div>
       </div>
-    </nav>
+    </motion.nav>
   );
 }
