@@ -49,8 +49,8 @@ export default function Navbar({ isDarkMode, setIsDarkMode }) {
 
             {/* Resume Button: rounded-xl to match the new container style */}
             <a 
-              href="/Lopez_Sherwin_Soler_Resume.pdf"
-              download="Lopez_Sherwin_Soler_Resume.pdf"
+              href="/Sherwin_Lopez_Resume.pdf"
+              download="Sherwin_Lopez_Resume.pdf"
               className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-xl transition shadow-lg shadow-blue-900/20 active:scale-95"
             >
               Resume
