@@ -22,8 +22,16 @@ export default function Contact({ isDarkMode }) {
     setIsLoading(true);
     setStatus('Sending message...');
 
+    const templateParams = {
+      title: 'New Website Inquiry',
+      name: form.name,
+      email: form.email,
+      message: form.message,
+      time: new Date().toLocaleString(),
+    };
+
     emailjs
-      .sendForm('service_prlex9p', 'template_42mvx8i', event.target)
+      .send('service_prlex9p', 'template_42mvx8i', templateParams)
       .then(
         () => {
           setStatus('Message sent! I will reply as soon as possible.');
@@ -64,7 +72,6 @@ export default function Contact({ isDarkMode }) {
               Name
               <input
                 type="text"
-                name="from_name"
                 value={form.name}
                 onChange={(e) => setForm({ ...form, name: e.target.value })}
                 placeholder="Your name"
@@ -76,7 +83,6 @@ export default function Contact({ isDarkMode }) {
               Email
               <input
                 type="email"
-                name="from_email"
                 value={form.email}
                 onChange={(e) => setForm({ ...form, email: e.target.value })}
                 placeholder="you@example.com"
@@ -88,7 +94,6 @@ export default function Contact({ isDarkMode }) {
               Message
               <textarea
                 rows="5"
-                name="message"
                 value={form.message}
                 onChange={(e) => setForm({ ...form, message: e.target.value })}
                 placeholder="Tell me about your project or questions"
