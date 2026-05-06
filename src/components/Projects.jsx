@@ -33,7 +33,7 @@ export default function Projects({ isDarkMode }) {
       id: 3,
       title: "sherwin.io",
       description: "sherwin.io is a personal portfolio website built with React and Tailwind CSS. It showcases my projects, skills, and experience in a modern, responsive design.",
-      tags: ["React", "Tailwind CSS", "JavaScript"],
+      tags: ["React", "Tailwind CSS"],
       github: "https://sherwinio.vercel.app/",
       image: sherwinImg, // Use the imported variable
     },
@@ -41,7 +41,7 @@ export default function Projects({ isDarkMode }) {
       id: 4,
       title: "Essential Hub Cafe",
       description: "Essential Hub Cafe is a modern coffee shop website template designed to provide an engaging online experience for coffee enthusiasts.",
-      tags: ["React", "Tailwind CSS", "JavaScript"],
+      tags: ["React", "Tailwind CSS"],
       github: "https://essential-cafe.vercel.app/",
       image: essentialImg, // Use the imported variable
     },

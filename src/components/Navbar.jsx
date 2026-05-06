@@ -51,7 +51,7 @@ export default function Navbar({ isDarkMode, setIsDarkMode }) {
           animate={{ opacity: 1 }}
           className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-emerald-400 bg-clip-text text-transparent"
         >
-          Sherwin.io
+          Sherwin
         </motion.h1>
 
         <div className="flex items-center space-x-4 md:space-x-8 text-sm font-medium">

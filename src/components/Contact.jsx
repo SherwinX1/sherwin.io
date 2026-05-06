@@ -1,9 +1,15 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import emailjs from '@emailjs/browser';
 import { Mail, Send } from 'lucide-react';
 
 export default function Contact({ isDarkMode }) {
   const [form, setForm] = useState({ name: '', email: '', message: '' });
   const [status, setStatus] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    emailjs.init('bE-SIRTbwYFFso78z');
+  }, []);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -13,15 +19,24 @@ export default function Contact({ isDarkMode }) {
       return;
     }
 
-    const body = encodeURIComponent(
-      `Name: ${form.name}\nEmail: ${form.email}\n\n${form.message}`
-    );
-    const mailtoLink = `mailto:lopezsherwin.work@gmail.com?subject=${encodeURIComponent(
-      'Website inquiry from sherwin.io'
-    )}&body=${body}`;
+    setIsLoading(true);
+    setStatus('Sending message...');
 
-    setStatus('Opening your email client...');
-    window.location.href = mailtoLink;
+    emailjs
+      .sendForm('service_prlex9p', 'template_42mvx8i', event.target)
+      .then(
+        () => {
+          setStatus('Message sent! I will reply as soon as possible.');
+          setForm({ name: '', email: '', message: '' });
+        },
+        (error) => {
+          console.error('EmailJS send error:', error);
+          setStatus('Send failed. Please open the console for error details.');
+        }
+      )
+      .finally(() => {
+        setIsLoading(false);
+      });
   };
 
   return (
@@ -49,6 +64,7 @@ export default function Contact({ isDarkMode }) {
               Name
               <input
                 type="text"
+                name="from_name"
                 value={form.name}
                 onChange={(e) => setForm({ ...form, name: e.target.value })}
                 placeholder="Your name"
@@ -60,6 +76,7 @@ export default function Contact({ isDarkMode }) {
               Email
               <input
                 type="email"
+                name="from_email"
                 value={form.email}
                 onChange={(e) => setForm({ ...form, email: e.target.value })}
                 placeholder="you@example.com"
@@ -71,6 +88,7 @@ export default function Contact({ isDarkMode }) {
               Message
               <textarea
                 rows="5"
+                name="message"
                 value={form.message}
                 onChange={(e) => setForm({ ...form, message: e.target.value })}
                 placeholder="Tell me about your project or questions"
@@ -79,8 +97,13 @@ export default function Contact({ isDarkMode }) {
             </label>
 
             <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-              <button type="submit" className="inline-flex items-center justify-center gap-2 rounded-full bg-blue-600 px-6 py-3 text-sm font-bold text-white transition hover:bg-blue-700">
-                Send message <Send className="w-4 h-4" />
+              <button
+                type="submit"
+                disabled={isLoading}
+                className={`inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-bold text-white transition ${isLoading ? 'bg-blue-400 cursor-not-allowed' : 'bg-blue-600 hover:bg-blue-700'}`}
+              >
+                {isLoading ? 'Sending...' : 'Send message'}
+                {!isLoading && <Send className="w-4 h-4" />}
               </button>
               {status && <p className="text-sm text-blue-400">{status}</p>}
             </div>

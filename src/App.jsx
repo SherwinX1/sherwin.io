@@ -7,14 +7,13 @@ import Skills from './components/Skills';
 import Projects from './components/Projects';
 import Testimonial from './components/Testimonial';
 import Contact from './components/Contact';
-import ContactFAB from './components/ContactFAB';
 
 export default function App() {
-  const [isDarkMode, setIsDarkMode] = useState(true); 
+  const [isDarkMode, setIsDarkMode] = useState(false); 
 
   const themeClasses = isDarkMode 
-    ? "bg-slate-900 text-slate-100" 
-    : "bg-slate-50 text-slate-900";
+    ? "bg-gradient-to-b from-slate-900 via-slate-950 to-slate-900 text-slate-100" 
+    : "bg-gradient-to-b from-white via-slate-50 to-slate-100 text-slate-900";
 
   return (
     <div className={`min-h-screen font-sans transition-colors duration-500 selection:bg-blue-500/30 ${themeClasses}`}>
@@ -33,8 +32,6 @@ export default function App() {
       <Skills isDarkMode={isDarkMode} />
 
       <Contact isDarkMode={isDarkMode} />
-      
-      <ContactFAB isDarkMode={isDarkMode} />
     </div>
   );
 }
