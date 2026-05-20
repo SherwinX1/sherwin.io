@@ -22,10 +22,10 @@ export default function ProjectCard({ project, isDarkMode }) {
       </div>
 
       <div className="relative z-10 flex flex-col lg:flex-row gap-10 items-start justify-between">
-        
+
         {/* LEFT CONTENT */}
         <div className="flex-1">
-          
+
           {/* Title */}
           <h3 className="text-2xl md:text-4xl font-black leading-tight mb-5">
             <span className="bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent">
@@ -64,11 +64,7 @@ export default function ProjectCard({ project, isDarkMode }) {
 
           {/* Buttons */}
           <div className="flex flex-wrap gap-4 mt-8">
-            <a
-              href={project.github}
-              target="_blank"
-              rel="noreferrer"
-            >
+            <a href={project.github} target="_blank" rel="noreferrer">
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
@@ -83,11 +79,7 @@ export default function ProjectCard({ project, isDarkMode }) {
               </motion.button>
             </a>
 
-            <a
-              href={project.live}
-              target="_blank"
-              rel="noreferrer"
-            >
+            <a href={project.live} target="_blank" rel="noreferrer">
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
@@ -102,22 +94,6 @@ export default function ProjectCard({ project, isDarkMode }) {
 
         {/* RIGHT IMAGE */}
         <div className="relative w-full lg:w-[300px] flex justify-center">
-          
-          {/* Live Badge */}
-          <div className="absolute top-0 right-4 z-20">
-            <div
-              className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium shadow-lg ${
-                isDarkMode
-                  ? 'bg-slate-900 text-green-400'
-                  : 'bg-white text-green-500'
-              }`}
-            >
-              <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-              Live
-            </div>
-          </div>
-
-          {/* Image */}
           <motion.div
             whileHover={{
               rotate: -2,
