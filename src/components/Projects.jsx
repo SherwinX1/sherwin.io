@@ -6,6 +6,7 @@ import denturaImg from '../assets/dentura1.png';
 import mediImg from '../assets/meditrack.png';
 import sherwinImg from '../assets/sherwin.png';
 import essentialImg from '../assets/essential.png';
+import servexImg from '../assets/servex.png';
 
 export default function Projects({ isDarkMode }) {
   const projectData = [
@@ -40,9 +41,21 @@ export default function Projects({ isDarkMode }) {
       description:
         'Essential Hub Cafe is a modern coffee shop website template designed to provide an engaging online experience for coffee enthusiasts.',
       tags: ['React', 'Tailwind CSS'],
-      github: 'https://github.com/SherwinX1',
+      github: 'https://github.com/SherwinX1/essential-cafe',
       live: 'https://essential-cafe.vercel.app/',
       image: essentialImg,
+    },
+
+        {
+      id: 4,
+      title: 'Servex',
+      subtitle: 'E-commerce Service Marketplace',
+      description:
+        'Servex is a a trusted marketplace connecting you with verified skilled workers for fast, reliable home and business services.',
+      tags: ['React', 'Tailwind CSS'],
+      github: 'https://github.com/SherwinX1/Servex',
+      live: '',
+      image: servexImg,
     },
   ];
 
