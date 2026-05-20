@@ -1,10 +1,24 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
-import { Sun, Moon } from 'lucide-react';
+import { useNavigate, useLocation } from 'react-router-dom';
+import {
+  House,
+  User,
+  Briefcase,
+  Wrench,
+  Mail,
+  Sun,
+  Moon,
+  FileText,
+  FolderKanban,
+} from 'lucide-react';
 
 export default function Navbar({ isDarkMode, setIsDarkMode }) {
   const [isVisible, setIsVisible] = useState(true);
   const lastScrollY = useRef(0);
+
+  const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -22,68 +36,95 @@ export default function Navbar({ isDarkMode, setIsDarkMode }) {
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
+
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const navItems = [
+    { id: '/', icon: House },
+    { id: '/about', icon: User },
+    { id: '/experience', icon: Briefcase },
+    { id: '/projects', icon: FolderKanban },
+    { id: '/skills', icon: Wrench },
+    { id: '/contact', icon: Mail },
+  ];
 
   return (
     <motion.nav
       initial={{ opacity: 1, y: 0 }}
-      animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : -16 }}
+      animate={{
+        opacity: isVisible ? 1 : 0,
+        y: isVisible ? 0 : 100,
+      }}
       transition={{ duration: 0.28, ease: 'easeOut' }}
-      className="fixed top-0 left-0 right-0 z-50 flex justify-center p-6"
+      className="fixed bottom-4 left-1/2 -translate-x-1/2 z-50 px-3 w-full flex justify-center"
     >
-      {/* 
-        The Floating Container:
-        - rounded-2xl: Matches the softer rectangular corners in image_2a4919.png
-        - shadow-xl: Gives it that "lifted" appearance
-        - max-w-7xl: Keeps it aligned with your content width
-      */}
-      <div 
-        className={`w-full max-w-7xl flex justify-between items-center px-8 py-4 transition-all duration-300 ${isVisible ? 'pointer-events-auto' : 'pointer-events-none'}
-          ${isDarkMode 
-            ? 'bg-slate-900/80 border border-slate-700/50 shadow-2xl' 
-            : 'bg-white/80 border border-slate-200/60 shadow-xl'} 
-          backdrop-blur-md rounded-2xl`}
+      <div
+        className={`flex items-center gap-1 sm:gap-3 px-2 sm:px-4 py-2 sm:py-3 rounded-2xl backdrop-blur-xl border shadow-2xl transition-all duration-300 max-w-fit
+        ${
+          isDarkMode
+            ? 'bg-slate-900/85 border-slate-700/50'
+            : 'bg-white/85 border-slate-200/60'
+        }`}
       >
-        {/* Your Original Logo - Unchanged */}
-        <motion.h1 
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-emerald-400 bg-clip-text text-transparent"
-        >
-          Sherwin
-        </motion.h1>
+        {/* Nav Icons */}
+        <div className="flex items-center gap-1 sm:gap-2">
+          {navItems.map((item, index) => {
+            const Icon = item.icon;
 
-        <div className="flex items-center space-x-4 md:space-x-8 text-sm font-medium">
-          <div className={`hidden sm:flex space-x-8 ${isDarkMode ? 'text-slate-300' : 'text-slate-600'}`}>
-            <a href="#about" className="hover:text-blue-500 transition">About</a>
-            <a href="#experience" className="hover:text-blue-500 transition">Experience</a>
-            <a href="#skills" className="hover:text-blue-500 transition">Skills</a>
-            <a href="#contact" className="hover:text-blue-500 transition">Contact</a>
-          </div>
-          
-          <div className="flex items-center gap-3">
-            <button 
-              onClick={() => setIsDarkMode(!isDarkMode)}
-              className={`p-2 rounded-xl border transition-all ${
-                isDarkMode 
-                  ? 'border-slate-700 hover:bg-slate-800 text-yellow-400' 
-                  : 'border-slate-200 hover:bg-slate-100 text-blue-600'
-              }`}
-            >
-              {isDarkMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
-            </button>
+            const isActive = location.pathname === item.id;
 
-            {/* Resume Button: rounded-xl to match the new container style */}
-            <a 
-              href="/Sherwin_Lopez_Resume.pdf"
-              download="Sherwin_Lopez_Resume.pdf"
-              className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-xl transition shadow-lg shadow-blue-900/20 active:scale-95"
-            >
-              Resume
-            </a>
-          </div>
+            return (
+              <button
+                key={index}
+                onClick={() => navigate(item.id)}
+                className={`p-2 sm:p-3 rounded-xl transition-all duration-200 hover:scale-110
+                ${
+                  isActive
+                    ? 'bg-blue-600 text-white'
+                    : isDarkMode
+                    ? 'text-slate-300 hover:bg-slate-800 hover:text-blue-400'
+                    : 'text-slate-600 hover:bg-slate-100 hover:text-blue-600'
+                }`}
+              >
+                <Icon className="w-4 h-4 sm:w-5 sm:h-5" />
+              </button>
+            );
+          })}
         </div>
+
+        {/* Divider */}
+        <div
+          className={`w-px h-6 sm:h-8 mx-1 ${
+            isDarkMode ? 'bg-slate-700' : 'bg-slate-300'
+          }`}
+        />
+
+        {/* Dark Mode */}
+        <button
+          onClick={() => setIsDarkMode(!isDarkMode)}
+          className={`p-2 sm:p-3 rounded-xl transition-all duration-200 hover:scale-110
+          ${
+            isDarkMode
+              ? 'text-yellow-400 hover:bg-slate-800'
+              : 'text-blue-600 hover:bg-slate-100'
+          }`}
+        >
+          {isDarkMode ? (
+            <Sun className="w-4 h-4 sm:w-5 sm:h-5" />
+          ) : (
+            <Moon className="w-4 h-4 sm:w-5 sm:h-5" />
+          )}
+        </button>
+
+        {/* Resume */}
+        <a
+          href="/Sherwin_Lopez_Resume.pdf"
+          download
+          className="p-2 sm:p-3 rounded-xl bg-blue-600 hover:bg-blue-700 text-white transition-all duration-200 hover:scale-110"
+        >
+          <FileText className="w-4 h-4 sm:w-5 sm:h-5" />
+        </a>
       </div>
     </motion.nav>
   );

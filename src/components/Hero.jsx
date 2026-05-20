@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Atom, Layers, Server, Sparkles, Figma } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 export default function Hero({ isDarkMode }) {
   return (
@@ -11,7 +12,7 @@ export default function Hero({ isDarkMode }) {
         transition={{ duration: 0.8 }}
         className="w-full max-w-3xl"
       >
-        {/* Spacer for top margin */}
+        {/* Spacer */}
         <div className="mb-10" aria-hidden="true" />
 
         {/* Heading */}
@@ -19,57 +20,82 @@ export default function Hero({ isDarkMode }) {
           I'm Sherwin Lopez
         </h1>
 
-        <h2 className={`text-3xl md:text-4xl font-extrabold mb-4 ${isDarkMode ? 'text-slate-100' : 'text-slate-900'}`}>
+        <h2
+          className={`text-3xl md:text-4xl font-extrabold mb-4 ${
+            isDarkMode ? 'text-slate-100' : 'text-slate-900'
+          }`}
+        >
           Full Stack Developer
         </h2>
 
+        {/* Tech badges */}
         <motion.div
           className="mb-10 flex flex-wrap justify-center gap-3"
           animate={{ x: [0, -12, 0] }}
-          transition={{ repeat: Infinity, repeatType: 'loop', duration: 6, ease: 'easeInOut' }}
+          transition={{
+            repeat: Infinity,
+            repeatType: 'loop',
+            duration: 6,
+            ease: 'easeInOut',
+          }}
         >
-          <div className={`inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold ${isDarkMode ? 'bg-slate-900 text-slate-100' : 'bg-white text-slate-700'}`}>
-            <Atom className="w-4 h-4" />
-            React
-          </div>
-          <div className={`inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold ${isDarkMode ? 'bg-slate-900 text-slate-100' : 'bg-white text-slate-700'}`}>
-            <Sparkles className="w-4 h-4" />
-            Tailwind CSS
-          </div>
-          <div className={`inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold ${isDarkMode ? 'bg-slate-900 text-slate-100' : 'bg-white text-slate-700'}`}>
-            <Layers className="w-4 h-4" />
-            Full Stack
-          </div>
-          <div className={`inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold ${isDarkMode ? 'bg-slate-900 text-slate-100' : 'bg-white text-slate-700'}`}>
-            <Server className="w-4 h-4" />
-            Node.js
-          </div>
-          <div className={`inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold ${isDarkMode ? 'bg-slate-900 text-slate-100' : 'bg-white text-slate-700'}`}>
-            <Figma className="w-4 h-4" />
-            Figma
-          </div>
+          <Badge isDarkMode={isDarkMode} icon={<Atom className="w-4 h-4" />} text="React" />
+          <Badge isDarkMode={isDarkMode} icon={<Sparkles className="w-4 h-4" />} text="Tailwind CSS" />
+          <Badge isDarkMode={isDarkMode} icon={<Layers className="w-4 h-4" />} text="Full Stack" />
+          <Badge isDarkMode={isDarkMode} icon={<Server className="w-4 h-4" />} text="Node.js" />
+          <Badge isDarkMode={isDarkMode} icon={<Figma className="w-4 h-4" />} text="Figma" />
         </motion.div>
 
         {/* Subheading */}
-        <h2 className={`text-xl md:text-2xl font-semibold mb-6 ${isDarkMode ? 'text-slate-300' : 'text-slate-700'}`}>
+        <h2
+          className={`text-xl md:text-2xl font-semibold mb-6 ${
+            isDarkMode ? 'text-slate-300' : 'text-slate-700'
+          }`}
+        >
           Building fast, scalable & beautiful web experiences
         </h2>
 
         {/* CTA Buttons */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-          <a href="#projects" className="contents">
-            <button className={`${isDarkMode ? 'bg-slate-100 text-slate-900' : 'bg-slate-900 text-white'} px-8 py-4 rounded-full font-bold hover:bg-blue-500 hover:text-white transition-all shadow-xl text-center w-full sm:w-auto`}>
+          <Link to="/projects">
+            <button
+              className={`px-8 py-4 rounded-full font-bold transition-all shadow-xl w-full sm:w-auto ${
+                isDarkMode
+                  ? 'bg-slate-100 text-slate-900 hover:bg-blue-500 hover:text-white'
+                  : 'bg-slate-900 text-white hover:bg-blue-500'
+              }`}
+            >
               View Projects
             </button>
-          </a>
-          
-          <a href="#contact" className="contents">
-            <button className={`border ${isDarkMode ? 'border-slate-700 text-slate-300' : 'border-slate-300 text-slate-700'} px-8 py-4 rounded-full font-bold hover:border-blue-500 hover:text-blue-500 transition-all w-full sm:w-auto`}>
+          </Link>
+
+          <Link to="/contact">
+            <button
+              className={`px-8 py-4 rounded-full font-bold transition-all w-full sm:w-auto border ${
+                isDarkMode
+                  ? 'border-slate-700 text-slate-300 hover:border-blue-500 hover:text-blue-500'
+                  : 'border-slate-300 text-slate-700 hover:border-blue-500 hover:text-blue-500'
+              }`}
+            >
               Get In Touch
             </button>
-          </a>
+          </Link>
         </div>
       </motion.div>
     </main>
+  );
+}
+
+/* Small reusable badge component */
+function Badge({ isDarkMode, icon, text }) {
+  return (
+    <div
+      className={`inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold ${
+        isDarkMode ? 'bg-slate-900 text-slate-100' : 'bg-white text-slate-700'
+      }`}
+    >
+      {icon}
+      {text}
+    </div>
   );
 }

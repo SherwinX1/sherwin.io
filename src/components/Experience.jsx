@@ -1,54 +1,157 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Award } from 'lucide-react';
 
 export default function Experience({ isDarkMode }) {
-  const skillExperience = [
-    { name: "HTML / CSS", years: 5, percentage: 95 },
-    { name: "JavaScript", years: 2, percentage: 60 },
-    { name: "React, Tailwind, Bootstrap", years: 3, percentage: 80 },
-    { name: "Xampp, MySQL", years: 4, percentage: 85 },
+  const experiences = [
+{
+  company: 'Essential Hub Company Inc.',
+  role: 'Full Stack Developer Intern',
+  date: 'May 2025 – Sept 2025 · Remote',
+
+  description:
+    'Worked as a Full Stack Developer Intern contributing to the development of an e-commerce web application while collaborating closely with the development team on frontend functionality, backend integration, and overall user experience.',
+
+  skills: [
+    {
+      title: 'Team Leadership',
+      text: 'guided the team through technical challenges and assisted with project architecture decisions',
+    },
+
+    {
+      title: 'Full Stack Development',
+      text: 'collaborated on the end-to-end development of the Essential e-commerce platform',
+    },
+
+    {
+      title: 'React.js',
+      text: 'translated UI/UX wireframes into responsive and high-performance frontend interfaces',
+    },
+
+    {
+      title: 'Debugging & Optimization',
+      text: 'identified frontend bottlenecks and improved application performance and stability',
+    },
+  ],
+
+  footer:
+    'Strengthened practical experience in collaborative software development, problem-solving, frontend engineering, and scalable web application development.',
+}
   ];
 
   return (
-    <section id="experience" className="max-w-7xl mx-auto px-6 py-12 scroll-mt-24">
-      <motion.div 
-        initial={{ opacity: 0, x: -50 }}
-        whileInView={{ opacity: 1, x: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8 }}
-        className={`${isDarkMode ? 'bg-slate-800/40 border-slate-700/50' : 'bg-white border-slate-200 shadow-xl'} border rounded-3xl p-8 md:p-12`}
-      >
-        <div className="flex items-center gap-3 mb-10">
-          <div className="p-2 bg-emerald-500/10 rounded-lg text-emerald-500">
-            <Award className="w-6 h-6" />
-          </div>
-          <h2 className="text-3xl font-bold">Skill Experience</h2>
-        </div>
+    <section
+      id="experience"
+      className="max-w-7xl mx-auto px-6 py-28"
+    >
+      {/* Heading */}
+      <div className="mb-16">
+        <h2
+          className={`text-4xl md:text-5xl font-black ${
+            isDarkMode ? 'text-white' : 'text-slate-900'
+          }`}
+        >
+          Experience
+        </h2>
+      </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-16 gap-y-8">
-          {skillExperience.map((skill, i) => (
-            <div key={i} className="space-y-3">
-              <div className="flex justify-between items-end">
-                <div>
-                  <span className="text-lg font-bold">{skill.name}</span>
-                  <span className="ml-3 text-sm text-blue-500 font-medium">{skill.years} Years</span>
-                </div>
-                <span className={`${isDarkMode ? 'text-slate-500' : 'text-slate-400'} text-sm font-mono`}>{skill.percentage}%</span>
+      {/* Experience Cards */}
+      <div className="flex flex-col gap-10">
+        {experiences.map((exp, index) => (
+          <motion.div
+            key={index}
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className={`rounded-3xl border p-8 md:p-10 transition-all duration-300 ${
+              isDarkMode
+                ? 'bg-slate-900/40 border-slate-800'
+                : 'bg-white border-slate-200 shadow-lg'
+            }`}
+          >
+            {/* Company */}
+            <div className="flex items-center gap-4 mb-8">
+              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-red-400 to-orange-400 flex items-center justify-center text-white font-black text-lg">
+                A
               </div>
-              <div className={`h-3 w-full rounded-full overflow-hidden ${isDarkMode ? 'bg-slate-700' : 'bg-slate-100'}`}>
-                <motion.div 
-                  initial={{ width: 0 }} 
-                  whileInView={{ width: `${skill.percentage}%` }} 
-                  viewport={{ once: true }}
-                  transition={{ duration: 1.5, ease: "anticipate" }}
-                  className="h-full bg-gradient-to-r from-blue-500 to-emerald-400"
-                />
-              </div>
+
+              <h3 className="text-2xl md:text-4xl font-black bg-gradient-to-r from-red-400 to-orange-400 bg-clip-text text-transparent">
+                {exp.company}
+              </h3>
             </div>
-          ))}
-        </div>
-      </motion.div>
+
+            {/* Description */}
+            <p
+              className={`text-lg leading-relaxed mb-10 ${
+                isDarkMode ? 'text-slate-400' : 'text-slate-600'
+              }`}
+            >
+              {exp.description}
+            </p>
+
+            {/* Skills */}
+            <div className="mb-10">
+              <h4
+                className={`font-semibold mb-5 ${
+                  isDarkMode ? 'text-white' : 'text-slate-900'
+                }`}
+              >
+                Actively learning and applying:
+              </h4>
+
+              <ul className="space-y-4">
+                {exp.skills.map((skill, i) => (
+                  <li
+                    key={i}
+                    className={`flex items-start gap-4 ${
+                      isDarkMode
+                        ? 'text-slate-400'
+                        : 'text-slate-700'
+                    }`}
+                  >
+                    <span className="mt-2 w-2 h-2 rounded-full bg-blue-500" />
+
+                    <p className="leading-relaxed">
+                      <span className="font-bold text-blue-500">
+                        {skill.title}
+                      </span>{' '}
+                      — {skill.text}
+                    </p>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Footer */}
+            <p
+              className={`leading-relaxed mb-8 ${
+                isDarkMode ? 'text-slate-400' : 'text-slate-600'
+              }`}
+            >
+              {exp.footer}
+            </p>
+
+            {/* Role */}
+            <div>
+              <h4
+                className={`text-2xl font-bold mb-2 ${
+                  isDarkMode ? 'text-white' : 'text-slate-900'
+                }`}
+              >
+                {exp.role}
+              </h4>
+
+              <p
+                className={`${
+                  isDarkMode ? 'text-slate-500' : 'text-slate-500'
+                }`}
+              >
+                {exp.date}
+              </p>
+            </div>
+          </motion.div>
+        ))}
+      </div>
     </section>
   );
 }

@@ -1,66 +1,136 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { User2, MapPinned, Github, Linkedin, Facebook, Instagram } from 'lucide-react';
+import {
+  MapPinned,
+  Github,
+  Linkedin,
+  Facebook,
+  Instagram,
+} from 'lucide-react';
 
 export default function About({ isDarkMode }) {
   const socials = [
-    { icon: <Github />, url: "https://github.com/SherwinX1" },
-    { icon: <Linkedin />, url: "https://www.linkedin.com/in/sherwin-lopez-473092388/" },
-    { icon: <Facebook />, url: "https://www.facebook.com/weyn68/" },
-    { icon: <Instagram />, url: "https://www.instagram.com/serweynn/" }
+    {
+      icon: <Github />,
+      url: 'https://github.com/SherwinX1',
+    },
+    {
+      icon: <Linkedin />,
+      url: 'https://www.linkedin.com/in/sherwin-lopez-473092388/',
+    },
+    {
+      icon: <Facebook />,
+      url: 'https://www.facebook.com/weyn68/',
+    },
+    {
+      icon: <Instagram />,
+      url: 'https://www.instagram.com/serweynn/',
+    },
   ];
 
   return (
-    <section id="about" className="max-w-7xl mx-auto px-6 py-12 scroll-mt-24">
-      <motion.div 
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8 }}
-        className={`${isDarkMode ? 'bg-slate-800/30 border-slate-700/50' : 'bg-white border-slate-200 shadow-sm'} border rounded-3xl p-8 md:p-12`}
-      >
-        <div className="flex flex-col md:flex-row gap-12 items-center">
-          <div className="flex-1">
-            <div className="flex items-center gap-3 mb-6">
-              <div className="p-2 bg-blue-500/10 rounded-lg text-blue-500">
-                <User2 className="w-6 h-6" />
-              </div>
-              <h2 className="text-3xl font-bold">About Me</h2>
-            </div>
-            
-            <div className={`${isDarkMode ? 'text-slate-400' : 'text-slate-600'} space-y-4 text-lg leading-relaxed`}>
-              <p>
-                Full Stack Developer specializing in building web and app applications, inspired by a childhood fascination with technology. A fast learner and collaborative team player, passionate about creating modern, user-friendly solutions, and eager to join a company where I can contribute, gain hands-on experience, and expand my knowledge while tackling real-world challenges.
+    <section
+      id="about"
+      className="max-w-7xl mx-auto px-6 py-28"
+    >
+      <div className="grid lg:grid-cols-2 gap-16 items-center">
+        
+        {/* LEFT CONTENT */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+        >
+          {/* Small Label */}
+          <div className="flex items-center gap-3 mb-6">
+            <div className="w-12 h-[2px] bg-blue-500" />
+            <span className="uppercase tracking-[0.3em] text-sm text-blue-500 font-semibold">
+              About
+            </span>
+          </div>
+
+          {/* Description */}
+          <div
+            className={`space-y-6 text-lg leading-relaxed ${
+              isDarkMode ? 'text-slate-400' : 'text-slate-600'
+            }`}
+          >
+            <p>
+              Passionate Full Stack Developer focused on building modern,
+              responsive, and scalable web applications using React.js and
+              contemporary backend technologies. Experienced in developing
+              e-commerce platforms and web-based systems with strong attention
+              to clean code, performance, and seamless user experience.
+            </p>
+
+            <p>
+              A collaborative and
+              fast-learning developer who enjoys solving real-world problems
+              through efficient and high-quality web solutions.
+            </p>
+          </div>
+        </motion.div>
+
+        {/* RIGHT CONTENT */}
+        <motion.div
+          initial={{ opacity: 0, x: 40 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="flex flex-col gap-10"
+        >
+          {/* Location */}
+          <div>
+            <h4 className="text-sm uppercase tracking-[0.3em] text-blue-500 font-bold mb-4">
+              Location
+            </h4>
+
+            <div
+              className={`flex items-center gap-3 ${
+                isDarkMode ? 'text-slate-300' : 'text-slate-700'
+              }`}
+            >
+              <MapPinned className="w-5 h-5 text-blue-500" />
+              <p className="text-lg font-medium">
+                Pangasinan, Philippines
               </p>
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 mt-8">
-                <motion.div initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }}>
-                  <h4 className="text-blue-500 font-bold mb-3 text-sm uppercase tracking-widest">Location</h4>
-                  <div className={`flex items-center gap-2 ${isDarkMode ? 'text-slate-200' : 'text-slate-800'}`}>
-                    <MapPinned className="w-5 h-5 text-blue-500" />
-                    <p>Pangasinan, Philippines</p>
-                  </div>
-                </motion.div>
-
-                <motion.div initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: 0.4 }}>
-                  <h4 className="text-blue-500 font-bold mb-3 text-sm uppercase tracking-widest">Socials</h4>
-                  <div className="flex gap-4">
-                    {socials.map((social, i) => (
-                      <a 
-                        key={i} 
-                        href={social.url} 
-                        className={`p-2 border rounded-lg transition-all ${isDarkMode ? 'bg-slate-900 border-slate-700 hover:border-blue-500 text-slate-300' : 'bg-slate-100 border-slate-200 hover:border-blue-500 text-slate-700'} hover:text-blue-500`}
-                      >
-                        {React.cloneElement(social.icon, { className: "w-5 h-5" })}
-                      </a>
-                    ))}
-                  </div>
-                </motion.div>
-              </div>
             </div>
           </div>
-        </div>
-      </motion.div>
+
+          {/* Socials */}
+          <div>
+            <h4 className="text-sm uppercase tracking-[0.3em] text-blue-500 font-bold mb-5">
+              Socials
+            </h4>
+
+            <div className="flex flex-wrap gap-5">
+              {socials.map((social, i) => (
+                <motion.a
+                  key={i}
+                  href={social.url}
+                  target="_blank"
+                  rel="noreferrer"
+                  whileHover={{
+                    y: -5,
+                    scale: 1.1,
+                  }}
+                  whileTap={{ scale: 0.95 }}
+                  className={`transition ${
+                    isDarkMode
+                      ? 'text-slate-400 hover:text-blue-400'
+                      : 'text-slate-600 hover:text-blue-500'
+                  }`}
+                >
+                  {React.cloneElement(social.icon, {
+                    className: 'w-7 h-7',
+                  })}
+                </motion.a>
+              ))}
+            </div>
+          </div>
+        </motion.div>
+      </div>
     </section>
   );
 }

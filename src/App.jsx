@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -9,29 +11,34 @@ import Testimonial from './components/Testimonial';
 import Contact from './components/Contact';
 
 export default function App() {
-  const [isDarkMode, setIsDarkMode] = useState(false); 
+  const [isDarkMode, setIsDarkMode] = useState(false);
 
-  const themeClasses = isDarkMode 
-    ? "bg-gradient-to-b from-slate-900 via-slate-950 to-slate-900 text-slate-100" 
-    : "bg-gradient-to-b from-white via-slate-50 to-slate-100 text-slate-900";
+  const themeClasses = isDarkMode
+    ? 'bg-gradient-to-b from-slate-900 via-slate-950 to-slate-900 text-slate-100'
+    : 'bg-gradient-to-b from-white via-slate-50 to-slate-100 text-slate-900';
 
   return (
-    <div className={`min-h-screen font-sans transition-colors duration-500 selection:bg-blue-500/30 ${themeClasses}`}>
-      <Navbar isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />
-      
-      <Hero isDarkMode={isDarkMode} />
-      
-      <About isDarkMode={isDarkMode} />
-      
-      <Testimonial isDarkMode={isDarkMode} />
+    <BrowserRouter>
+      <div
+        className={`min-h-screen font-sans transition-colors duration-500 selection:bg-blue-500/30 ${themeClasses}`}
+      >
+        <Navbar isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />
 
-      <Experience isDarkMode={isDarkMode} />
+        <div className="min-h-screen flex items-center justify-center">
+          <Routes>
+            <Route path="/" element={<Hero isDarkMode={isDarkMode} />} />
+            <Route path="/about" element={<About isDarkMode={isDarkMode} />} />
+            <Route path="/experience" element={<Experience isDarkMode={isDarkMode} />} />
+            <Route path="/projects" element={<Projects isDarkMode={isDarkMode} />} />
+            <Route path="/skills" element={<Skills isDarkMode={isDarkMode} />} />
+            <Route path="/testimonial" element={<Testimonial isDarkMode={isDarkMode} />} />
+            <Route path="/contact" element={<Contact isDarkMode={isDarkMode} />} />
 
-      <Projects isDarkMode={isDarkMode} />
-
-      <Skills isDarkMode={isDarkMode} />
-
-      <Contact isDarkMode={isDarkMode} />
-    </div>
+            {/* fallback */}
+            <Route path="*" element={<Navigate to="/" />} />
+          </Routes>
+        </div>
+      </div>
+    </BrowserRouter>
   );
 }
