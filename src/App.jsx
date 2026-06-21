@@ -20,7 +20,7 @@ export default function App() {
   return (
     <BrowserRouter>
       <div
-        className={`min-h-screen font-sans transition-colors duration-500 selection:bg-blue-500/30 ${themeClasses}`}
+        className={`min-h-screen transition-colors duration-500 selection:bg-blue-500/30 ${themeClasses}`}
       >
         <Navbar isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />
 

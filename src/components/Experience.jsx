@@ -70,12 +70,8 @@ export default function Experience({ isDarkMode }) {
             }`}
           >
             {/* Company */}
-            <div className="flex items-center gap-4 mb-8">
-              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-red-400 to-orange-400 flex items-center justify-center text-white font-black text-lg">
-                A
-              </div>
-
-              <h3 className="text-2xl md:text-4xl font-black bg-gradient-to-r from-red-400 to-orange-400 bg-clip-text text-transparent">
+            <div className="mb-8">
+              <h3 className={`text-2xl md:text-4xl font-black ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>
                 {exp.company}
               </h3>
             </div>

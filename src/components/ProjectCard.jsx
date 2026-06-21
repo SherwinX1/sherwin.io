@@ -28,11 +28,11 @@ export default function ProjectCard({ project, isDarkMode }) {
 
           {/* Title */}
           <h3 className="text-2xl md:text-4xl font-black leading-tight mb-5">
-            <span className="bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent">
+            <span className={isDarkMode ? 'text-white' : 'text-slate-900'}>
               {project.title}
             </span>{' '}
             –{' '}
-            <span className={isDarkMode ? 'text-white' : 'text-slate-900'}>
+            <span className={isDarkMode ? 'text-slate-300' : 'text-slate-600'}>
               {project.subtitle}
             </span>
           </h3>
