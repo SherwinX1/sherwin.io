@@ -6,7 +6,7 @@ import denturaImg from '../assets/dentura1.png';
 import mediImg from '../assets/meditrack.png';
 import sherwinImg from '../assets/sherwin.png';
 import essentialImg from '../assets/essential.png';
-import servexImg from '../assets/servex.png';
+import dashlyImg from '../assets/dashly.png';
 
 export default function Projects({ isDarkMode }) {
   const projectData = [
@@ -48,14 +48,14 @@ export default function Projects({ isDarkMode }) {
 
         {
       id: 4,
-      title: 'Servex',
-      subtitle: 'E-commerce Service Marketplace',
+      title: 'Dashly',
+      subtitle: 'E-commerce website for food delivery',
       description:
-        'Servex is a a trusted marketplace connecting you with verified skilled workers for fast, reliable home and business services.',
+        'Dashly is a modern e-commerce platform designed for seamless food ordering and delivery experiences.',
       tags: ['React', 'Tailwind CSS'],
-      github: 'https://github.com/SherwinX1/Servex',
-      live: '',
-      image: servexImg,
+      github: 'https://github.com/SherwinX1/Dashly',
+      live: 'https://dashly-gamma.vercel.app/',
+      image: dashlyImg,
     },
   ];
 
